@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath groupProjectBackend groupProjectBackend.wsgi --log-file -
+web: gunicorn --pythonpath groupProjectBackend groupProjectBackend.wsgi --log-file=-
