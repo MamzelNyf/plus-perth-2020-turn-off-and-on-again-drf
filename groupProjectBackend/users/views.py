@@ -5,6 +5,9 @@ from rest_framework.response import Response
 from .models import CustomUser
 from.serializers import CustomUserSerializer
 from .permissions import IsUserOrReadOnly
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class CustomUserList(APIView):
@@ -49,7 +52,10 @@ class CustomUserDetail(APIView):
         return Response(serializer.data)
 
     def put(self, request, pk):
+        logger.info(f"pk={pk}")
         user = self.get_object(pk)
+        logger.info(f"user={str(user.__dict__)}")
+
         serializer = CustomUserSerializer(
             instance = user,
             data=request.data,
